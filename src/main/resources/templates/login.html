@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <!-- Sugerencia: enlaza tu archivo CSS aquí con th:href="@{/css/style.css}" -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Sugerencia: muestra el mensaje de error si existe (viene del controller via flash attribute) -->
+    <!-- th:if="${error}" para mostrarlo solo cuando haya error -->
+    <!-- th:text="${error}" para poner el texto del mensaje -->
+    <div th:if="${error}" th:text="${error}"></div>
+    <!-- Sugerencia: muestra también mensajes de éxito (ej: "Cuenta creada, inicia sesión") -->
+    <div th:if="${success}" th:text="${success}"></div>
+    <!-- Formulario de login -->
+    <!-- th:action="@{/login}" apunta al @PostMapping("/login") del controller -->
+    <!-- method="post" es importante para enviar datos de forma segura -->
+    <form th:action="@{/login}" method="post">
+        <!-- Sugerencia: campo para el nombre de usuario -->
+
+        <!-- El atributo name="username" debe coincidir con @RequestParam en el controller -->
+        <input type="text" name="username">
+        <!-- Sugerencia: campo para la contraseña, usa type="password" -->
+        <input type="password" name="password">
+        <!-- Sugerencia: botón de submit -->
+        <button type="submit">Iniciar Sesion</button>
+    </form>
+    <!-- Sugerencia: enlace a la página de registro para usuarios nuevos -->
+    <a th:href="@{/register}">¿No tienes cuenta? Regístrate</a>
+</body>
+</html>
