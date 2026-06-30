@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <!-- Sugerencia: enlaza tu CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-
     <!-- Sugerencia: saludo personalizado usando el nombre de la sesión -->
+    <div th:if="${success}" th:text="${success}"></div>
     <!-- th:text="${username}" muestra el valor que el controller pasó con model.addAttribute() -->
-
+    <h1>Bienvenido! <span th:text="${username}"></span> </h1>
     <!-- Sugerencia: muestra mensajes de error o éxito (ej: "Contraseña incorrecta") -->
-
+    <div th:if="${error}" th:text="${error}"></div>
     <!-- Sección: opciones de cuenta -->
     <!-- Sugerencia: botón/enlace para ir a la página de editar cuenta -->
+    <a th:href="@{/edit}">Editar cuenta</a>
     <!-- Sugerencia: botón/enlace para cerrar sesión (apunta a /logout) -->
+    <a th:href="@{/logout}">Cerrar sesion</a>
 
     <!-- Sección: eliminar cuenta -->
     <!-- Sugerencia: formulario con campo de contraseña para confirmar antes de eliminar -->
     <!-- th:action="@{/delete}" method="post" -->
     <!-- Pedir la contraseña aquí es una buena práctica de seguridad -->
+    <form th:action="@{/delete}" method="post">
+        <input type="password" name="password">
+        <button type="submit">Eliminar cuenta</button>
+    </form>
 
 </body>
 </html>

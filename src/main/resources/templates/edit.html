@@ -5,22 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Cuenta</title>
     <!-- Sugerencia: enlaza tu CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
     <!-- Sugerencia: enlace para volver al dashboard -->
-
+    <a th:href="@{/dashboard}">Volver al dashboard</a>
     <!-- Sugerencia: muestra mensajes de error o éxito -->
+    <div th:if="${error}" th:text="${error}"></div>
+    <div th:if="${success}" th:text="${success}"></div>
 
     <!-- Sección 1: cambiar nombre de usuario -->
     <!-- th:action="@{/update-username}" method="post" -->
     <!-- Sugerencia: un input de texto con name="nuevoUsername" -->
     <!-- Sugerencia: podrías usar th:placeholder="${username}" para mostrar el nombre actual -->
+    <form th:action="@{/update-username}" method="post">
+        <input type="text" name="nuevoUsername" th:placeholder="${username}">
+        <button type="submit">Cambiar username</button>
+
+    </form>
 
     <!-- Sección 2: cambiar contraseña -->
     <!-- th:action="@{/update-password}" method="post" -->
     <!-- Sugerencia: dos campos: name="passwordActual" y name="nuevaPassword" -->
     <!-- Pedir la contraseña actual es importante para verificar la identidad del usuario -->
-
+    <form th:action="@{/update-password}" method="post">
+        <input type="password" name="passwordActual" th:placeholder="Contraseña actual">
+        <input type="password" name="nuevaPassword" th:placeholder="Nueva contraseña">
+        <button type="submit">Cambiar password</button>
+    </form>
 </body>
 </html>
