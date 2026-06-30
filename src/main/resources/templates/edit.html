@@ -30,8 +30,8 @@
     <!-- Sugerencia: dos campos: name="passwordActual" y name="nuevaPassword" -->
     <!-- Pedir la contraseña actual es importante para verificar la identidad del usuario -->
     <form th:action="@{/update-password}" method="post">
-        <input type="password" name="passwordActual" th:placeholder="Contraseña actual">
-        <input type="password" name="nuevaPassword" th:placeholder="Nueva contraseña">
+        <input type="password" name="passwordActual" placeholder="Contraseña actual">
+        <input type="password" name="nuevaPassword" placeholder="Nueva contraseña">
         <button type="submit">Cambiar password</button>
     </form>
 </body>
